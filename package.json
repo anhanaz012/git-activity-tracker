@@ -1,0 +1,15 @@
+{
+  "name": "github-activity",
+  "version": "1.0.0",
+  "description": "a CLI tool to fetch a GitHub user's public account details (profile, activity, repos)",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "github-activity": "./index.js"
+  }
+}
