@@ -178,11 +178,14 @@ const formatPayload = (type, data) => {
   }
 };
 const getUserActivity = async (username) => {
+  if (!username) {
+    return { message: "No username provided" };
+  }
   const response = await fetch(
     `https://api.github.com/users/${username}/events`,
   );
   if (!response.ok) {
-    return `Error: Github returned ${response.status}`;
+    return { message: `Error: Github returned ${response.status}` };
   }
   return await response.json();
 };
@@ -249,8 +252,10 @@ const formatPullRequestEvent = (act, data) => {
 };
 getUserActivity(username)
   .then((res) => {
+    if (res.message) return console.log(res.message);
+    if (res.length === 0) return console.log("No activity found");
     processActivity(res);
   })
   .catch((err) => {
-    console.error("Error:", err);
+    console.log(err);
   });
