@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { writeFileSync } from "fs";
 import process from "process";
 const username = process.argv[2];
 const extractRef = (ref) => {
@@ -250,7 +249,6 @@ const formatPullRequestEvent = (act, data) => {
 };
 getUserActivity(username)
   .then((res) => {
-    writeFileSync("events.json", JSON.stringify(res));
     processActivity(res);
   })
   .catch((err) => {
